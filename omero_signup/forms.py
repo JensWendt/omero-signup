@@ -54,6 +54,13 @@ class SignupForm(forms.Form):
         max_length=100, widget=forms.TextInput(attrs={
             'size': 22}))
 
+    terms_accepted = forms.BooleanField(
+        label='I accept the terms and conditions',
+        error_messages={
+            'required': 'You must accept the terms and conditions'
+            },
+        widget=forms.CheckboxInput(attrs={'class': 'terms-accepted'}))
+
     def clean_firstname(self):
         return _string_not_white_space(self.cleaned_data['firstname'])
 
